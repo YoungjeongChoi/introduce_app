@@ -12,7 +12,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         val logoutBtn = findViewById<Button>(R.id.btn_logout)
-        val yourName = intent.getStringExtra("name")
+        val yourName = intent.getStringExtra("myname")
         val yourId = intent.getStringExtra("Id")
 
         var introId = findViewById<TextView>(R.id.tv_id_content)

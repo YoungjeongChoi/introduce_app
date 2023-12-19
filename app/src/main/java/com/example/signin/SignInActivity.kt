@@ -30,23 +30,26 @@ class SignInActivity : AppCompatActivity() {
 //            editTextId.onTouchEvent(MotionEvent)
         //선택했을 때 커서가 생기고 hint글씨가 사라지면 좋겠는데... 모르겠다 괜히 자꾸 이상한 데로 빠지지 말자...
         val editTextPw = findViewById<EditText>(R.id.et_pw).text
-        val id = editTextId.toString()
-        val pw = editTextPw.toString()
+
+
 
         signInBtn.setOnClickListener {
+
+            val myName = intent.getStringExtra("name")
 
             if (editTextId.trim().isEmpty() || editTextPw.trim().isEmpty()) {
                 Toast.makeText(this, "아이디/패스워드 입력하세요", Toast.LENGTH_SHORT).show()
             } else {
                 val intent = Intent(this, HomeActivity::class.java)
+                val id = editTextId.toString()
+                val pw = editTextPw.toString()
                 Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
                 intent.putExtra("Id", id)
                 intent.putExtra("Pw", pw)
+                intent.putExtra("myname", myName)
                 startActivity(intent)
             }
 
-                //다 썼으면 확인하고 틀리면 메시지, 맞으면 메시지 출력하고 home으로 넘어가기?
-                //homeActivity Extra 사용
 
         }
 
