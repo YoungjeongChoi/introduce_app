@@ -42,6 +42,8 @@ class SignUpActivity : AppCompatActivity() {
                     Toast.makeText(this, "회원가입 성공", Toast.LENGTH_SHORT).show()
                     var intent = Intent(this, SignInActivity::class.java)
                     intent.putExtra("name", newName)
+                    intent.putExtra("Id", newId)
+                    intent.putExtra("Pw", newPw)
                     startActivity(intent)
                 }
             }
