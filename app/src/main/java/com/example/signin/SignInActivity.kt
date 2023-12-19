@@ -27,29 +27,36 @@ class SignInActivity : AppCompatActivity() {
         val signInBtn = findViewById<Button>(R.id.btn_sign_in)
         val signUpBtn = findViewById<Button>(R.id.btn_sign_up)
 
-        val myId = intent.getStringExtra("Id").toString()
-        val myPw = intent.getStringExtra("Pw").toString()
+        val myId = intent.getStringExtra("Id")
+        val myPw = intent.getStringExtra("Pw")
 
-        val editTextId = findViewById<EditText>(R.id.et_id).text
+        val editTextId = findViewById<EditText>(R.id.et_id)
 //            editTextId.onTouchEvent(MotionEvent)
-        val editTextPw = findViewById<EditText>(R.id.et_pw).text
+        val editTextPw = findViewById<EditText>(R.id.et_pw)
 
+        if (myId == null) {
+            editTextId.setText("")
+            editTextPw.setText("")
+        }else {
+            editTextId.setText(myId.toString())
+            editTextPw.setText(myPw.toString())
+        }
 
         signInBtn.setOnClickListener {
 
             val myName = intent.getStringExtra("name")
 
-            if (editTextId.trim().isEmpty() || editTextPw.trim().isEmpty()) {
-                Toast.makeText(this, "아이디/패스워드 입력하세요", Toast.LENGTH_SHORT).show()
-            } else {
+//            if (editTextId.text.trim().isEmpty() || editTextPw.text.trim().isEmpty()) {
+//                Toast.makeText(this, "아이디/패스워드 입력하세요", Toast.LENGTH_SHORT).show()
+//            } else {
                 val intent = Intent(this, HomeActivity::class.java)
-                val id = editTextId.toString()
+                val id = editTextId.text.toString()
 //                val pw = editTextPw.toString()
                 Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
                 intent.putExtra("Id", id)
                 intent.putExtra("myname", myName)
                 startActivity(intent)
-            }
+//            }
 
         }
 
