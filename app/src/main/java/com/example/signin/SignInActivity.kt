@@ -27,6 +27,7 @@ class SignInActivity : AppCompatActivity() {
         val signInBtn = findViewById<Button>(R.id.btn_sign_in)
         val signUpBtn = findViewById<Button>(R.id.btn_sign_up)
 
+        //회원가입 시 입력한 값 받아오는 거 launcher 아직 잘 모르겠어서 일단 Extra로 대신 사용
         val myId = intent.getStringExtra("Id")
         val myPw = intent.getStringExtra("Pw")
 
@@ -34,6 +35,7 @@ class SignInActivity : AppCompatActivity() {
 //            editTextId.onTouchEvent(MotionEvent)
         val editTextPw = findViewById<EditText>(R.id.et_pw)
 
+        //받아온 값 있으면 넣고 없으면 그냥 입력하게 빈칸
         if (myId == null) {
             editTextId.setText("")
             editTextPw.setText("")
@@ -46,9 +48,9 @@ class SignInActivity : AppCompatActivity() {
 
             val myName = intent.getStringExtra("name")
 
-//            if (editTextId.text.trim().isEmpty() || editTextPw.text.trim().isEmpty()) {
-//                Toast.makeText(this, "아이디/패스워드 입력하세요", Toast.LENGTH_SHORT).show()
-//            } else {
+            if (editTextId.text.trim().isEmpty() || editTextPw.text.trim().isEmpty()) {
+                Toast.makeText(this, "아이디/패스워드 입력하세요", Toast.LENGTH_SHORT).show()
+            } else {
                 val intent = Intent(this, HomeActivity::class.java)
                 val id = editTextId.text.toString()
 //                val pw = editTextPw.toString()
@@ -56,7 +58,7 @@ class SignInActivity : AppCompatActivity() {
                 intent.putExtra("Id", id)
                 intent.putExtra("myname", myName)
                 startActivity(intent)
-//            }
+            }
 
         }
 
