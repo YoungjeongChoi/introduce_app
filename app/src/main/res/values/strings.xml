@@ -8,5 +8,9 @@
     <string name="sign_up">회원가입</string>
     <string name="name">이름</string>
     <string name="prev_name">이름을 입력하세요</string>
+    <string name="gender">성별</string>
+    <string name="gender_context">여자</string>
+    <string name="mbti">MBTI</string>
+    <string name="mbti_context">INTP</string>
     <string name="logout">로그아웃</string>
 </resources>

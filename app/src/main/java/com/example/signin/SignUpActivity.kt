@@ -26,6 +26,8 @@ class SignUpActivity : AppCompatActivity() {
             val newPw = editTextNewPw.text.toString()
 
 
+            //여러 개 비어있어도 메시지가 제일 위에 하나만 출력되는 게 아니라 뭔가 여러 개가 시간차 두고 순서대로 뜨거나 하면 좋을 것 같은데 어떻게 해야 될지 모르겠다
+            //아니면 비어있는 거 있을 때 버튼 누르면 빨간색으로 바뀌면서 그 자리로 커서 옮기기...같은 거?
             when {
                 newName.trim().isEmpty() -> {
                     Toast.makeText(this, "이름을 입력하세요", Toast.LENGTH_SHORT).show()
@@ -49,6 +51,6 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
 
-        //추가과제 resisterForActivityResult?로 회원가입 시 입력한 아이디 비번 자동입력
+        //추가과제 resisterForActivityResult?로 회원가입 시 입력한 아이디 비번 자동입력?
     }
 }

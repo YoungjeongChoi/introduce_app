@@ -16,12 +16,14 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         val logoutBtn = findViewById<Button>(R.id.btn_logout)
-        val yourName = intent.getStringExtra("myname")
+        val yourName = intent.getStringExtra("name")
         val yourId = intent.getStringExtra("Id")
 
+        //팀원분이 만드신 것처럼 이미지뷰 아이디 리스트로 만들어놓으면 더 깔끔할 것 같다 고치기
         val rand = Random()
         val num = rand.nextInt(5)
 
+        //작동에는 문제가 없는데 drawable에 있는 이미지 빨간줄은 왜 생긴 거지 모르겠다...
         val randImg1 = findViewById<ImageView>(R.id.img_home_logo)
         val randImg2 = findViewById<ImageView>(R.id.img_home_logo2)
         val randImg3 = findViewById<ImageView>(R.id.img_home_logo3)
@@ -52,7 +54,7 @@ class HomeActivity : AppCompatActivity() {
 
 
         logoutBtn.setOnClickListener {
-            //로그아웃이니까 입력된 정보 초기화?는 안 해도 되나...
+            //로그아웃이니까 입력된 정보 초기화?는 안 해도 되나...?
             finish()
         }
     }
