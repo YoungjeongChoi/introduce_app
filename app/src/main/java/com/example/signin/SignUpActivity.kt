@@ -3,9 +3,11 @@ package com.example.signin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.signin.SignInActivity.Companion.dataStore
 
 class SignUpActivity : AppCompatActivity() {
@@ -13,7 +15,7 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
-        val createBtn = findViewById<Button>(R.id.btn_create)
+        val createBtn = findViewById<ConstraintLayout>(R.id.btn_create)
 
         val editTextNewName = findViewById<EditText>(R.id.et_name)
         val editTextNewId = findViewById<EditText>(R.id.et_new_id)
@@ -41,16 +43,21 @@ class SignUpActivity : AppCompatActivity() {
                 else -> {
                     //AccountData.storeData(newName, newId, newPw)
                     //삽질 흔적...
+                    val intent = Intent(this, SignInActivity::class.java).apply {
+                        putExtra("name", newName)
+                        putExtra("Id", newId)
+                        putExtra("Pw", newPw)
+                    }
                     Toast.makeText(this, "회원가입 성공", Toast.LENGTH_SHORT).show()
-                    var intent = Intent(this, SignInActivity::class.java)
-                    intent.putExtra("name", newName)
-                    intent.putExtra("Id", newId)
-                    intent.putExtra("Pw", newPw)
-                    startActivity(intent)
+                    setResult(RESULT_OK, intent)
+//                    startActivity(intent)
+
+                    if (!isFinishing) finish()
                 }
             }
         }
 
         //추가과제 resisterForActivityResult?로 회원가입 시 입력한 아이디 비번 자동입력?
+        //따라치긴 했는데 코드 부분부분?은 잘 이해 못 하겠다... apply는 왜 쓰는 거지
     }
 }

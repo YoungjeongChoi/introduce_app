@@ -28,8 +28,7 @@
 
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/img_home_logo3"
@@ -114,6 +113,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/tv_home_name"
         app:layout_constraintStart_toStartOf="@+id/tv_id_content"
         app:layout_constraintTop_toTopOf="@+id/tv_home_name" />
+
     <TextView
         android:id="@+id/tv_home_gender"
         style="@style/TextViewContent"
@@ -158,16 +158,59 @@
         app:layout_constraintStart_toStartOf="@+id/tv_gender_content"
         app:layout_constraintTop_toTopOf="@+id/tv_home_mbti" />
 
-    <Button
-        android:id="@+id/btn_logout"
-        style="@style/Button"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_btn_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
-        android:background="@drawable/btn_color"
-        android:text="@string/logout"
-
+        android:background="@drawable/selector_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent">
+
+        <ImageView
+            android:id="@+id/img_home_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_img_selector"
+            android:layout_marginEnd="5dp"
+
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_home_logout"
+            />
+
+        <TextView
+            android:id="@+id/tv_home_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@string/logout"
+            style="@style/ButtonText"
+
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintTop_toTopOf="@+id/img_home_logout"
+            app:layout_constraintBottom_toBottomOf="@+id/img_home_logout"
+            app:layout_constraintLeft_toRightOf="@+id/img_home_logout"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--<Button-->
+    <!--android:id="@+id/btn_logout"-->
+    <!--style="@style/Button"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginBottom="50dp"-->
+    <!--android:text="@string/logout"-->
+
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--app:layout_constraintRight_toRightOf="parent" />-->
