@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import java.lang.Math.random
 import java.util.Random
@@ -15,13 +16,24 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        val logoutBtn = findViewById<Button>(R.id.btn_logout)
-        val yourName = intent.getStringExtra("name")
+        val logoutBtn = findViewById<ConstraintLayout>(R.id.layout_btn_home)
+
+        val introId = findViewById<TextView>(R.id.tv_id_content)
+        val introName = findViewById<TextView>(R.id.tv_name_content)
+
         val yourId = intent.getStringExtra("Id")
+        val yourName = intent.getStringExtra("name")
+
+        if (intent.hasExtra("Id")) {
+            introId.text = yourId
+        }
+        if (intent.hasExtra("name")) {
+            introName.setText(yourName.toString())
+        }
 
         //팀원분이 만드신 것처럼 이미지뷰 아이디 리스트로 만들어놓으면 더 깔끔할 것 같다 고치기
-        val rand = Random()
-        val num = rand.nextInt(5)
+//        val rand = Random()
+//        val num = rand.nextInt(5)
 
         //작동에는 문제가 없는데 drawable에 있는 이미지 빨간줄은 왜 생긴 거지 모르겠다...
         val randImg1 = findViewById<ImageView>(R.id.img_home_logo)
@@ -29,10 +41,9 @@ class HomeActivity : AppCompatActivity() {
         val randImg3 = findViewById<ImageView>(R.id.img_home_logo3)
         val randImg4 = findViewById<ImageView>(R.id.img_home_logo4)
         val randImg5 = findViewById<ImageView>(R.id.img_home_logo5)
-        val introId = findViewById<TextView>(R.id.tv_id_content)
-        val introName = findViewById<TextView>(R.id.tv_name_content)
 
-        when(num) {
+
+        when((0..4).random()) {
             0 -> {
                 randImg1.isVisible = true
             }
@@ -49,9 +60,9 @@ class HomeActivity : AppCompatActivity() {
                 randImg5.isVisible = true
             }
         }
-        introId.setText(yourId.toString())
-        introName.setText(yourName.toString())
 
+//        introId.setText(yourId.toString())
+//        introName.setText(yourName.toString())
 
         logoutBtn.setOnClickListener {
             //로그아웃이니까 입력된 정보 초기화?는 안 해도 되나...?
